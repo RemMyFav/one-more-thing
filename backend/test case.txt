@@ -1,0 +1,163 @@
+login:
+1. registerUser
+    a. normal registe *
+    b. must provide username password email *
+    c. registed user can not registe again *
+2. loginUser
+    a. normal login *
+    b. must provide username password *
+    c. check password *
+3. getUser
+    a. normal get info *
+    b. user can only get his own info *
+
+user1:{
+    "_id": "62d2e9bab40e41bf06434e6d",
+    "name": "yhk",
+    "email": "none",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZDJlOWJhYjQwZTQxYmYwNjQzNGU2ZCIsImlhdCI6MTY1Nzk4OTU2MiwiZXhwIjoxNjU4ODUzNTYyfQ.84pW00yrnKtiMHBKZAx5hulxNq5kf0lIvEqwdY8Ryjo"
+    group:[62d2ef2838dfd35375813446]
+    person:[62d34adccffdd7052ca62722]
+}
+user2:{
+    "_id": "62d2ea85b40e41bf06434e78",
+    "name": "yw",
+    "email": "none",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZDJlYTg1YjQwZTQxYmYwNjQzNGU3OCIsImlhdCI6MTY1Nzk4OTc2NSwiZXhwIjoxNjU4ODUzNzY1fQ.TYBAlYt-1_1xfIu1qByGxW-2d0zr09J3iEMsPYWtELI"
+}
+user3:{
+    "_id": "62d2eac1b40e41bf06434e7b",
+    "name": "zhy",
+    "email": "none",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZDJlYWMxYjQwZTQxYmYwNjQzNGU3YiIsImlhdCI6MTY1Nzk4OTgyNSwiZXhwIjoxNjU4ODUzODI1fQ.xgrzfNiWX7ySdKn3gN0ja_7nifekU84Z1JEzXkdxKtw"
+    group:[62d2eca2b40e41bf06434e8c]
+    person:[]
+}
+
+groupController:
+must provide token
+1. getCalendars
+    a. user can only get his own calendars *
+    b. shouldnt get person's calendar *
+2. joinCalendars
+    a. user can only get those calendars that he joinCalendars *
+3. createCalendar
+    a. user must exist *
+    b. must provide title *
+4. getCalendar
+    a. calendar must exist *
+    b. user can get *
+    c. participant can get *
+5. updateParticipant
+    a. calendar must exist *
+    b. only owner can add more ppl *
+    c. must provide participant *
+    d. participant must exist *
+6. updateTitle
+    a. calendar must exist *
+    b. only owner can modify title *
+    c. must provide title *
+7. deleteCalendar
+    a. only owner can delete *
+    b. calendar must exist *
+
+personalController:
+must provide token
+1. createCalendar
+    a. user must exist *
+    b. must provide title *
+2. getCalendars
+    a. user can only get his own calendars *
+    b. shouldnt get group's calendar *
+3. getCalendar
+    a. calendar must exist *
+    b. user can get *
+4. updateTitle
+    a. calendar must exist *
+    b. must provide title *
+    c. only owner can modify *
+5. delete
+    a. only owner can delete *
+    b. calendar must exist *
+
+todoController:
+must provide token
+1. createTodo
+    a. must provide title start end *
+    b. only owner of current calendar can create todo in personal *
+    c. only owner and particpants can create todo in group *
+
+2. getTodos
+    a. only owner of current calendar can get todos in personal *
+    b. only owner and particpants can get todo in group *
+
+3. getTodo
+    a. only owner of current calendar can get todos in personal *
+    b. only owner and particpants can get todo in group *
+    c. todo must exist *
+    d. todo must belong to that calendar *
+
+4. updateTodo
+    a. only owner of current calendar can update todo in personal *
+    b. only owner and particpants can update todo in group *
+    c. todo must exist *
+    d. todo must belong to that calendar *
+    e. all fields must be provided *
+
+5. deleteTodo
+    a. only owner of current calendar can get todos in personal *
+    b. only owner and particpants can get todo in group *
+    c. todo must exist *
+    d. todo must belong to that calendar *
+
+6. deleteTodos
+    a. only owner of current calendar can get todos in personal *
+    b. only owner and particpants can get todo in group *
+
+    Final Test 2022/07/31 13:14
+1. Sign up *
+    A. Password based sign up *
+    B. Google oauth sign up *
+2. Sign in *
+    A. Password based sign in *
+    B. Google oauth sign in *
+3. Create personal calendar *
+    A. Create event *
+        a. week fields *
+        b. day fields *
+        c. month fields *
+        d. agenda *
+        e. send email *
+    B. Update event *
+        a. change title *
+        b. send updated email *
+    C. Delete event *
+        a. delete email *
+    D. Update calendar *
+        a. change title *
+    E. Delete calendar ?
+        a. delete all events * 
+        b. delete all email *
+4. Create group calendar
+    A. Create event
+        a. week fields
+        b. day fields
+        c. month fields
+        d. agenda
+        e. send email to owner
+        f. send email to participant
+    B. Update event
+        a. change title
+        b. send updated email
+    C. Delete event
+        a. delete email
+    D. Update calendar
+        a. change title
+        b. add participant
+        c. send email to new participant
+    E. Delete calendar
+        a. delete all events
+        b. delete all email
+    F. Socketio real time interaction
+5. Logout *
+6. Change password
